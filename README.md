@@ -5,6 +5,7 @@ This is a python script which displays Now Playing (artist, title and remaining 
 It works with a Logitech Media Server install running on the same machine
 
 **Running the script**
+
 you can run it simply by running the script from the command line
 
 **To run it at boot**
