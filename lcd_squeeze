@@ -1,0 +1,30 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:     lcd_squeeze
+# Required-Start: $ALL
+# Should-Start: 
+# Required-Stop:
+# Should-Stop:
+# Default-Start:  2 3 4 5
+# Default-Stop: 0 1 6
+# Description:    lcd_squeeze
+### END INIT INFO
+case "$1" in
+    start)
+	check=$(nc -z 127.0.0.1 9090; echo $?)
+	while [ $check -eq 1 ]; do 
+		sleep 3
+		check=$(nc -z 127.0.0.1 9090; echo $?)
+	done
+        /usr/local/bin/lcd_squeeze.py --no-syslog &
+        ;;
+    stop)
+        killall lcd_squeeze.py
+        ;;
+    *)
+        echo "Usage: /etc/init.d/lcd_squeeze {start|stop}"
+        exit 1
+        ;;
+esac
+exit 0
+#

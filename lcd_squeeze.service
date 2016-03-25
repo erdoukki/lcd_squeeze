@@ -1,0 +1,11 @@
+[Unit]
+Description=Squeezelite LCD display
+After=squeezelite.service
+
+[Service]
+Type=forking
+ExecStart=/etc/init.d/lcd_squeeze start
+ExecStop=/etc/init.d/lcd_squeeze stop
+
+[Install]
+WantedBy=multi-user.target
